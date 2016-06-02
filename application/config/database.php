@@ -52,7 +52,7 @@ $active_record = TRUE;
 // $sid = "ORA11G";
 
 
-$host = "localhost";
+$host = "222.124.218.141";
 $sid = "orcl";
 
 //$host = "222.124.218.141";
