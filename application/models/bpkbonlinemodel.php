@@ -1014,6 +1014,35 @@ function stnk_add_pemohon($data) {
 		 return $ret;
 }
 
+function stnk_add_pemohon2($data) {
+    $sql="select stnk_add_pemohon2(
+		'$data->vKodePemohon',
+		'$data->vNama',
+		'$data->vSAMSAT_ID'
+		) as msg from dual";
+     //echo $sql; exit;
+	//echo "test..";
+
+		$result = $this->call_function($sql);
+		// show_array($result); 
+		// exit;
+		if($result['MSG'] <> 'error') { 
+		$tmp = explode("#",$result['MSG']);
+			if($tmp[0]=="1"){
+				$ret = array("result"=>"true","message"=>$result['MSG'],"message_err"=>"");
+			}
+			else {
+				$ret = array("result"=>"false","message"=>"","message_err"=>$result['MSG']);
+			}
+		 }
+		 else{
+
+		 	$ret = array("result"=>"false","message"=>"","message_err"=>"Error DB");
+		 }
+
+		 return $ret;
+}
+
 function stnk_add_rahasia($data) {
     $sql="select stnk_add_rahasia(
 		'$data->vNO_BPKB',
@@ -1038,6 +1067,47 @@ function stnk_add_rahasia($data) {
       //echo $sql; exit;
 	//echo "test..";
 
+		$result = $this->call_function($sql);
+		// show_array($result); 
+		// exit;
+		if($result['MSG'] <> 'error') { 
+		$tmp = explode("#",$result['MSG']);
+			if($tmp[0]=="1"){
+				$ret = array("result"=>"true","message"=>$result['MSG'],"message_err"=>"");
+			}
+			else {
+				$ret = array("result"=>"false","message"=>"","message_err"=>$result['MSG']);
+			}
+		 }
+		 else{
+
+		 	$ret = array("result"=>"false","message"=>"","message_err"=>"Error DB");
+		 }
+
+		 return $ret;
+}
+function stnk_add2($data) {
+
+   $data = $this->escape($data); 
+
+    $sql="select stnk_add2(
+		'$data->vNO_BPKB',
+		'$data->vNO_STNK',
+		'$data->vNREG_STNK',
+		'$data->vTGL_STNK',
+		'$data->vTGL_STNK_TO',
+		'$data->vENTRY_BY',
+		'$data->vENTRY_DATE',
+		'$data->vPOLDA_ID',
+		'$data->vPOLRES_ID',
+		'$data->vSAMSAT_ID',
+		'$data->vSNHDD',
+		'$data->vPEMOHON_ID',
+		'$data->vJenis',
+		'$data->vNAMA_PEMILIK',
+		'$data->vALAMAT_PEMILIK'
+		) as msg from dual"; 
+    
 		$result = $this->call_function($sql);
 		// show_array($result); 
 		// exit;
@@ -1301,5 +1371,44 @@ function stnk_list_registrasi_print2($param){
         return $ret;
 }
 
+function pengurus_list($param){
+	 
+		try {
+			$variables[0] = array("parameter" => "p1", "value" => $param->v_samsat);
+            $data =  $this->readCursor("pengurus_list(:p1, :refc)", $variables);
+            // show_array($data); exit;
+            //$ret = array("result"=>"true","message"=>$data);
+            if(count($data)==0){
+            	$ret = array("result"=>"false","message_err"=>"DATA NOT FOUND","message"=>"");
+            }
+            else {
+            	$ret = array("result"=>"true","message"=>array("detail_data"=>$data) , "message_err"=>"");
+            }
+        } 
+        catch(exception $ex){
+          $ret = array("result"=>"false","message_err"=>"DATABASE ERROR","message"=>"");
+        }
+        return $ret;
+}
+
+function m_merk($param){
+	 
+		try {
+			$variables[0] = array("parameter" => "p1", "value" => $param->v_polda_id);
+            $data =  $this->readCursor("m_merk_list(:p1, :refc)", $variables);
+            // show_array($data); exit;
+            //$ret = array("result"=>"true","message"=>$data);
+            if(count($data)==0){
+            	$ret = array("result"=>"false","message_err"=>"DATA NOT FOUND","message"=>"");
+            }
+            else {
+            	$ret = array("result"=>"true","message"=>array("detail_data"=>$data) , "message_err"=>"");
+            }
+        } 
+        catch(exception $ex){
+          $ret = array("result"=>"false","message_err"=>"DATABASE ERROR","message"=>"");
+        }
+        return $ret;
+}
 }
 ?>

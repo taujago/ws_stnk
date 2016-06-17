@@ -250,21 +250,10 @@ function stnk_add_pemohon(){
 	echo json_encode($result);
 }
 
-function stnk_add_pemohon2(){
-	$result = $this->bm->stnk_add_pemohon2($this->data->Param);
-	echo json_encode($result);
-}
-
 function stnk_add_rahasia(){
 	$result = $this->bm->stnk_add_rahasia($this->data->Param);
 	echo json_encode($result);
 }
-
-function stnk_add2(){
-	$result = $this->bm->stnk_add2($this->data->Param);
-	echo json_encode($result);
-}
-
 
 // ********* procedure *********
 function stnk_get_data(){
@@ -328,13 +317,6 @@ function stnk_list_registrasi_print2(){
 	$result = $this->bm->stnk_list_registrasi_print2($this->data->Param);
 	echo json_encode($result);
 }
-function pengurus_list(){
-	$result = $this->bm->pengurus_list($this->data->Param);
-	echo json_encode($result);
-}
-function m_merk(){
-	$result = $this->bm->m_merk($this->data->Param);
-	echo json_encode($result);
-}
+
 }
 ?>
