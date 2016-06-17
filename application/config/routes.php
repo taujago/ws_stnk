@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "depan";
+$route['default_controller'] = "depan_baru";
 $route['404_override'] = '';
 
 

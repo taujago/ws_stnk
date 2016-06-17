@@ -52,11 +52,14 @@ $active_record = TRUE;
 // $sid = "ORA11G";
 
 
-$host = "222.124.218.141";
-$sid = "orcl";
+//$host = "localhost";
+//$sid = "orcl";
 
 //$host = "222.124.218.141";
 //$sid = "ORCL";
+
+$host = "192.168.100.99";
+$sid = "ORCL";
 
 
 $tnsname = "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$host)(PORT=1521))(CONNECT_DATA=(SID=$sid)))";
