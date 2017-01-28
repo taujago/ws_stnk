@@ -55,7 +55,7 @@ $active_record = TRUE;
 //$host = "localhost";
 //$sid = "orcl";
 
-$host = "makasardev";
+$host = "makasarprod";
 //$sid = "ORCL";
 
 // $host = "192.168.100.99";
