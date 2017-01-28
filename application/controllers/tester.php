@@ -16,7 +16,8 @@ function test_conn(){
 	}
 }
 
-	var $url = "http://localhost/bpkbonline/index.php/rocknroll";
+	// var $url = "http://localhost/bpkbonline/index.php/rocknroll";
+var $url = "http://203.130.203.196/wsstnk/index.php/rocknroll";
 
 	//ss
 	// var $url = "http://180.250.16.227/bpkbonline/index.php/rocknroll";
@@ -579,8 +580,9 @@ function stnk_get_data(){
 				),
 				"Param" => array(				 
 
-						"v_is_cari"	=> "2",
-						"v_cari"   => "DA 2686 VF"
+						"v_is_cari"	=> "0",
+						"v_cari"   => "M 04270797 M",
+						"v_is_bbn" =>1,
 				));
 
 		$data_json = json_encode($data);
@@ -752,7 +754,31 @@ function stnk_list_registrasi_print(){
 	}
 
 
+function pengurus_list(){
 
+	 echo "ini pengurus list";
+		$data =  array(
+				"LoginInfo" => array ( 
+						"LoginName" => $this->user,
+						"Salt" =>  $this->salt,
+						"AuthHash" =>  md5( $this->user . "_".$this->salt. md5($this->pass) )   // algo   md5(user+md5(pass)) 
+				),
+				"Param" => array(				 
+
+					 
+						"v_samsat" => "1"
+						 
+				));
+
+		$data_json = json_encode($data);
+		//echo $data_json; exit;
+		// echo "sebelum dikirim " . $data_json;
+		$res = $this->execute_service2($this->url,"pengurus_list",$data_json);
+
+		// echo "<hr />"; 
+		//header('Content-type: text/xml');
+		echo $res; 
+	}
 
 
 }

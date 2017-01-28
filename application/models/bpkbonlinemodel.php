@@ -1136,7 +1136,7 @@ function stnk_get_data($param){
             $variables[1] = array("parameter" => "p2", "value" => $param->v_cari);
             $variables[2] = array("parameter" => "p3", "value" => $param->v_is_bbn);
             $data =  $this->readCursor("stnk_get_data2(:p1, :p2, :p3, :refc)", $variables);
-            // show_array($data); exit;
+            show_array($data); exit;
             //$ret = array("result"=>"true","message"=>$data);
             if(count($data)==0){
             	$ret = array("result"=>"false","message_err"=>"DATA NOT FOUND","message"=>"");
